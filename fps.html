@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Омега</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header class="top"><h1>Омега</h1><nav class="seg" aria-label="Инструменты"><a href="index.html">Качество</a><a href="fps.html" aria-current="page">FPS</a></nav></header>
+
+<section>
+  <h2>Видео</h2>
+  <div class="pick"><input id="file" type="file" accept="video/*"><div><b id="pickT">Выбрать видео</b><br><span id="pickI">Из галереи или файлов телефона</span></div></div>
+</section>
+
+<section>
+  <h2>Параметры экспорта</h2>
+  <div class="two">
+    <label class="f">Разрешение<select id="resolution"><option selected>Исходное</option><option>720p</option><option>1080p</option><option>1440p</option><option>4K</option></select></label>
+    <label class="f">Качество файла<select id="quality"><option>Максимальное качество</option><option selected>Высокое качество</option><option>Баланс</option><option>Меньший размер</option></select></label>
+  </div>
+  
+</section>
+
+<section>
+  <h2>Увеличение FPS</h2>
+  <label class="f" style="margin:0">Целевой FPS<select id="fps"><option>48</option><option selected>60</option><option>90</option><option>120</option></select></label>
+  <p class="hint">Недостающие кадры достраиваются по движению. Значения выше частоты экрана телефона (обычно 60 Гц) пользы не дадут. На быстрых сценах возможны артефакты.</p>
+</section>
+
+<section class="gap">
+  <canvas id="cv" hidden></canvas>
+  <div class="bar"><i id="bar"></i></div>
+  <p id="status" aria-live="polite">Выбери видео для улучшения.</p>
+  <button id="go" disabled>Улучшить видео</button>
+  <button id="cancel" class="alt" hidden>Отменить</button>
+  <p class="hint" id="warn">Обработка идёт в реальном времени: минута видео — около минуты. Не сворачивай вкладку, не блокируй экран и не переходи на другую вкладку сайта.</p>
+</section>
+
+<section id="result" class="gap" hidden>
+  <h2>Готово</h2>
+  <video id="out" controls playsinline></video>
+  <a id="dl" class="btn" href="#">Скачать видео</a>
+  <button id="share" class="alt" hidden>Сохранить в галерею / поделиться</button>
+</section>
+</main>
+<video id="src" playsinline preload="auto" style="position:absolute;width:2px;height:2px;opacity:0;pointer-events:none"></video>
+<script src="common.js"></script>
+<script src="fps.js"></script>
+</body>
+</html>
